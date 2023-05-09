@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>this is home page</title>
+
+</head>
+
+<body>
+
+	<section>
+		<div class="card mr-3 ml-3" th:if=${product}>
+
+			<div class="card-body" >
+				<div class="container text-center">
+					<h1>Product Details</h1>
+					<h3 class=""> <span th:text="${product.name}"></span>
+						<h5 style="color: brown;"></h5>
+						( <span th:text="${product.brand}"></span> )
+					</h3>
+					<div align="left">
+					<h4>Product image</h4>
+					<img src="" style="width: 100px;height: 100px;"
+						th:src="@{'/img/'+${product.image}}" alt="product photo">
+
+					</img>
+					</div>
+					<div class="container" align="right">
+						
+			       
+			       </form>
+					</div>
+					<table class="table table-dark">
+						<thead>
+							<tr>
+								
+									
+								</span>
+									
+								</th>
+								<!-- <button th:onclick="|deleteProduct(${product.pId})|"
+						class="btn btn-danger btn-small">Delete</button> -->
+						<a href="#" 
+									 th:href="@{'/user/delete/'+${product.pId}}"
+										class="btn btn-danger">Delete</a>
+								<form method="post" th:action="@{'/user/update-product/'+${product.pId}}" class="mt-2">
+			      
+			     		 
+								<button type="submit" class="btn btn-primary btn-sm">Update</button>
+								<h5 style="color: black; text-align: left;">Details:
+									<br>
+									<span th:text="${product.description}">
+								</h5>
+									
+								
+							</tr>
+							
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">Price</th>
+								<td><span th:text="${product.price}"></span></td>
+								
+								
+							</tr>
+							<tr>
+								<th scope="row">Quantity</th>
+								<td><span th:text="${product.quantity}"></span></td>
+								
+							</tr>
+							<tr>
+								<th scope="row">Manufactured In</th>
+								<td><span th:text="${product.origin}"></span></td>
+								
+							</tr>
+						<tr>
+								<th scope="row">Company Name</th>
+								<td><span th:text="${product.brand}"></span></td>
+								
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+
+			</div>
+			
+			
+				</div>
+	<h1 class="text-center p-3" th:unless="${product}"> Unauthorized attempt</h1>
+
+
+
+
+		<!-- content -->
+
+
+
+
+	</section>
+</body>
+
+</html>

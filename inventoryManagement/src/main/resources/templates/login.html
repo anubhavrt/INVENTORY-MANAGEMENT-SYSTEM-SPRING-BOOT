@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+>
+	
+<head>
+	
+	<meta charset="UTF-8" />
+		<title>this is home page</title>
+</head>	
+<body>
+	
+<section>
+	
+	 <div id="login">
+        
+        <div class="container" style="text-align: center;">
+			
+            <div id="login-row" class="row justify-content-left align-items-left">
+				
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+						<h1 style="text-align: center;color: orange;"> INVENTORY MANAGEMENT SYSTEM</h1>
+						
+                        <form id="login-form" class="form" th:action="@{/dologin}" action="#" method="post">
+                            <h3 class="text-center text-info">Login</h3>
+                            
+                            <div th:if="${param.error}" class="alert alert-danger">
+								Bad Credentials
+							</div>
+							
+							<div th:if="${param.logout}" class="alert alert-success">
+								Suceesfully Logged Out--VISIT AGAIIN--
+							</div>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Username:</label><br>
+                                <input type="text" name="username" id="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Password:</label><br>
+                                <input type="password" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                               <br>
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                            </div>
+                            <br>
+                            <div id="register-link" class="text-right">
+                                <a href="/signup" class="text-info">Register here</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+</section>	
+</body>	
+	
+</html>

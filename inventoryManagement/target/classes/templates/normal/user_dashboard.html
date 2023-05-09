@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>this is home page</title>
+
+</head>
+
+<body>
+
+	<section>
+		<div class="container">
+			<div clas="card">
+				<div class="card-body">
+					
+					<div class="container text-center">
+					<img src="" style="height: 200px; width: 200px;" th:src="@{'/img/home.png'}" alt="profile photo" />
+			   
+				</div>
+				<h1 class="text-center"> --Welcome User--</h1>
+					<h1 class="text-center">
+						Use our inventory management system
+					</h1>
+					<h1 style="text-align: center;"><a th:href="@{/user/add-product}" class="btn btn-primary text-uppercase">Add Product</a>
+				</h1>
+				</div>
+			</div>
+			
+		</div>
+
+
+
+
+
+<!-- content -->
+    
+		
+	
+
+	</section>
+</body>
+
+</html>

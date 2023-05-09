@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>this is home page</title>
+
+</head>
+
+<body>
+
+	<section>
+		<div class="card">
+
+			<div class="card-body">
+				<h1 class="text-center">My Products</h1>
+
+
+				<!-- search------ -->
+				<div class="my-3" style="position: relative;">
+
+
+					<input onkeyup="search()" id="search-input" type="text" class="form-control" placeholder="Search Inventory" />
+
+					<div class="search-result" style="
+						position: absolute;
+						background:white;
+						width: 100%;
+						padding:10px;
+						border: 1px solid gray;
+						display: none;">
+						<!-- result wil show here -->
+						<h1>this is result</h1>
+
+
+					</div>
+
+				</div>
+
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th scope="col">ID</th>
+								<th scope="col">Product Name</th>
+								<th scope="col">Price</th>
+								<th scope="col">Quantity</th>
+								<th scope="col">Brand</th>
+								<th scope="col">Country of Origin</th>
+								<th scope="col">Modify</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="c : ${products}">
+								<th scope="row" th:text="${'PD'+c.pId}">
+
+								</th>
+								<td>
+									<div>
+										<a th:href="@{'/user/'+${c.pId}+'/product' }">
+											<img src=""
+												style="width: 35px;height: 35px;object-fit:cover;border-radius:50%;"
+												th:src="@{'/img/'+${c.image}}" alt="product photo">
+
+											</img>
+										</a>
+									</div>
+									<span th:text="${c.name}">name</span>
+
+								</td>
+								<td th:text="${c.price}">price</td>
+								<td th:text="${c.quantity}">quantity</td>
+								<td th:text="${c.brand}">brand</td>
+								<td th:text="${c.origin}">origin</td>
+
+								<td>
+									<form method="post" th:action="@{'/user/update-product/'+${c.pId}}" class="mt-2">
+
+										<button type="submit" class="btn btn-success btn-sm">Edit </button>
+
+									</form>
+									<a href="#" 
+									 th:href="@{'/user/delete/'+${c.pId}}"
+										class="btn btn-danger">Del</a>
+									
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+
+					<!-- part of paginatoin ----------  -->
+
+
+
+					<nav aria-label="Page navigation example">
+
+						<ul class="pagination">
+
+							<li th:if="${currentPage != 0}" class="page-item"><a
+									th:href="@{'/user/show-products/'+${currentPage-1}}" class="page-link"
+									href="#">Back</a></li>
+
+
+
+							<li th:classappend="${currentPage==i-1?'active':''}"
+								th:each="i : ${#numbers.sequence(1,totalPages)}" class="page-item"><a
+									th:href="@{'/user/show-products/'+${i-1}}" class="page-link" href="#"><span
+										th:text="${i}"></span></a></li>
+
+
+							<li th:if="${currentPage+1 != totalPages}" class="page-item"><a
+									th:href="@{'/user/show-products/'+${currentPage+1}}" class="page-link"
+									href="#">Next</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+	</section>
+</body>
+
+</html>

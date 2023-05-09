@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>this is home page</title>
+</head>
+<body>
+	
+<section>
+	<div class="card">
+			
+			<div class="card-body">
+				<h1 class="text-center">
+					Edit Product
+				</h1>
+				<div class="container-fluid mt-1">
+					<div class="col-md-10 offset-md-1">
+						<form action="#" th:object="${product}"
+						enctype="multipart/form-data"
+						method="POST"
+						th:action="@{/user/process-update}"
+						class="mt-2"
+						>
+						<input type="hidden" th:value="${product.pId}"  name="pId" />
+						<!-- Product Name  -->
+						<div class="input-group">
+						
+							<div class="input-group-prepend">
+							
+								<div class="input-group-text">
+										
+										<i class="fa fa-plus"></i>
+									
+								</div>
+							
+							</div>
+						
+							<input th:value="${product.name}" required type="text" id="Name" name="name" placeholder="Enter Product Name here" class="form-control" />
+						
+						</div>
+						
+						
+							<!-- Product Price  -->
+						
+						<div class="input-group mt-3">
+						
+							<div class="input-group-prepend">
+							
+								<div class="input-group-text ">
+										
+										<i class="fas fa-user-alt"></i>
+									
+								</div>
+							
+							</div>
+						
+							<input th:value="${product.price}" required type="number" id="price" name="price" placeholder="Enter price here" class="form-control" />
+						
+						</div>
+							<!-- Product Quantity -->
+						<div class="input-group mt-3">
+						
+							<div class="input-group-prepend">
+							
+								<div class="input-group-text ">
+										
+										<i class="fa fa"></i>
+									
+								</div>
+							
+							</div>
+						
+							<input th:value="${product.quantity}" required min="10"  type="number" id="quantity" name="quantity" placeholder="Enter quantity  here" class="form-control" />
+						
+						</div>
+						
+							<!-- brand  -->
+						
+						<div class="input-group mt-3">
+						
+							<div class="input-group-prepend">
+							
+								<div class="input-group-text ">
+										
+									<i class="fa fa"></i>
+									
+								</div>
+							
+							</div>
+						
+							<input th:value="${product.brand}" required type="text" id="brand" name="brand" placeholder="Enter company name here" class="form-control" />
+						
+						</div>
+						<!-- origin -->
+						
+						<div class="input-group mt-3">
+						
+							<div class="input-group-prepend">
+							
+								<div class="input-group-text ">
+										
+									<i class="fa fa"></i>
+									
+								</div>
+							
+							</div>
+						
+							<input th:value="${product.origin}" required type="text" id="origin" name="origin" placeholder="Enter origin country name here" class="form-control" />
+						
+						</div>
+						
+					<!-- description -->
+						
+					<div class="form-group mt-3">
+							
+							<textarea th:text="${product.description}" id="mytextarea" placeholder="Enter product description" name="description"  class="form-control"  rows="4"></textarea>
+						
+						</div>
+						
+							<!-- Product Image  -->
+							<div class="container text-center">
+							<img style="width: 250px;height: 250px;" class="img-fluid" src="" th:src="@{'/img/'+${product.image}}" alt="" />
+						</div>
+						<p class="text-secondary">Select new product image</p>
+						<div class="custom-file">
+							<input type="file" name="productImage" />
+						
+						</div>
+						
+						
+						
+						<div class="container text-center">
+							
+						 <button class="btn btn-outline-primary">Save Product</button>
+						
+						</div>
+						</form>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	
+</section>	
+</body>	
+	
+</html>
